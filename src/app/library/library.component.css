@@ -1,0 +1,66 @@
+li a {
+  display: block;
+}
+
+.animate-slide-left {
+  animation: fade-move-left 7s infinite linear;
+}
+
+.animate-list {
+  animation: move-right 0.4s ease-out;
+}
+
+.animate-list-item {
+  animation: fade-in 0.4s linear;
+}
+
+.hide-bullets {
+  list-style: none;
+  padding-left: 0;
+}
+
+.hide-bullets a {
+  display: inline-flex;
+}
+
+.item-box-artist {
+  white-space: nowrap;
+  overflow: hidden;
+  width: 220px;
+}
+
+.item-box-album {
+  white-space: nowrap;
+  overflow: hidden;
+  width: 230px;
+}
+
+.item-box-song {
+  vertical-align: bottom;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 350px;
+}
+
+.text-selected {
+  pointer-events: none;
+  color: Crimson;
+}
+
+@keyframes move-right {
+  0% { transform: translateX(-30px); }
+  100% { transform: translateX(0); }
+}
+
+@keyframes fade-in {
+  0% { opacity: 0.1; }
+  100% { opacity: 1; }
+}
+
+@keyframes fade-move-left {
+  0% { opacity: 0.1; transform: translateX(0); }
+  5% { opacity: 1; }
+  30% { transform: translateX(0); }
+  85% { opacity: 1; }
+  100% { opacity: 0; transform: translateX(-150%); }
+}

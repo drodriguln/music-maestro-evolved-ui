@@ -1,0 +1,74 @@
+<br />
+<div *ngIf="artists == undefined">
+  <div class="row text-list">
+    <div class="col-md-3 col-md-offset-1">
+      <p>Loading...</p>
+    </div>
+  </div>
+</div>
+<div *ngIf="artists != undefined && artists.length == 0">
+  <div class="row text-list">
+    <div class="col-md-3 col-md-offset-1">
+      <p>Your library is currently empty.</p>
+    </div>
+  </div>
+</div>
+<div *ngIf="artists != undefined && artists.length > 0">
+  <div class="row text-list">
+    <div class="col-md-3 col-md-offset-1 animate-list library-text">
+      <div class="text-list-title">Artists</div>
+      <ul class="hide-bullets">
+        <div *ngFor="let artist of artists">
+          <li [ngClass]="{'animate-slide-left' : artist.name.length > 30, 'animate-list-item' : artist.name.length <= 30}">
+            <a href="#" [ngClass]="artist.id == artistIdSelected ? 'text-selected' : ''"
+            (click)="getAlbums(artist.id)">
+              <div class="item-box-artist">
+                <div *ngIf="artist.name != ''">{{artist.name}}</div>
+                <div *ngIf="artist.name == ''">[Unnamed Artist]</div>
+              </div>
+            </a>
+          </li>
+        </div>
+      </ul>
+    </div>
+    <div class="col-md-3 animate-list" *ngIf="artistIdSelected != null">
+      <div class="text-list-title">Albums</div>
+      <ul class="hide-bullets">
+        <div *ngFor="let album of albums">
+          <li>
+            <a href="#" [ngClass]="album.id == albumIdSelected ? 'text-selected' : ''"
+            (click)="getSongs(artistIdSelected, album.id)">
+              <div class="item-box-album">
+                <div [ngClass]="{'animate-slide-left' : album.name.length > 28, 'animate-list-item' : album.name.length <= 28}">
+                  <div *ngIf="album.name != ''">{{album.name}}</div>
+                  <div *ngIf="album.name == ''">[Unnamed Album]</div>
+                </div>
+              </div>
+            </a>
+          </li>
+        </div>
+      </ul>
+    </div>
+    <div class="col-md-5 animate-list library-text" *ngIf="albumIdSelected != null" >
+      <div class="text-list-title">Songs</div>
+      <ul class="hide-bullets">
+        <div *ngFor="let song of songs">
+          <li>
+            <div [ngClass]="{'animate-list-item' : song.name.length <= 42}">
+              <a href="#" [ngClass]="song.id == songIdSelected ? 'text-selected' : ''"
+              (click)="getSong(artistIdSelected, albumIdSelected, song.id)">
+                <div *ngIf="song.trackNumber != 0">{{song.trackNumber}}.&nbsp;</div>
+                <div class="item-box-song">
+                  <div [ngClass]="{'animate-slide-left' : song.name.length > 42}">
+                    <div *ngIf="song.name != ''">{{song.name}}</div>
+                    <div *ngIf="song.name == ''">[Unnamed Song]</div>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </li>
+        </div>
+      </ul>
+    </div>
+  </div>
+</div>

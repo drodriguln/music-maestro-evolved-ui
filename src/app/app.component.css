@@ -1,0 +1,20 @@
+#menu {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+#nav-bar li > a {
+    padding-left: 12px;
+    padding-right: 12px;
+}
+
+#nav-bar li.active > a:enabled {
+  border-bottom: 2px solid Crimson;
+  color: Gray;
+  background-color: transparent;
+}
+
+#nav-bar li > a:hover,
+#nav-bar li > a:focus {
+  background-color: transparent;
+}

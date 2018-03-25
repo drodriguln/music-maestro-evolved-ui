@@ -1,0 +1,45 @@
+/* You can add global styles to this file, and also import other style files */
+
+a {
+  color: Gray;
+}
+
+a:link, a:visited, a:hover, a:active, a:focus {
+  color: Gray;
+  text-decoration: none;
+}
+
+body {
+  background-color: #FAFAFA;
+}
+
+.text-list {
+  font-size: 14pt;
+  font-weight: lighter;
+}
+
+.text-list-title {
+  font-size: 16pt;
+  font-weight: normal;
+}
+
+.text-list p {
+  font-size: 14pt;
+  font-weight: lighter;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.extra-padding .row {
+  margin-bottom: 10px;
+}
+
+@media(min-width: 992px) {
+  .text-center-vertical .row div {
+    display: inline-block;
+    vertical-align: middle;
+    float: none;
+  }
+}
