@@ -16,6 +16,7 @@ export class LibraryComponent implements OnInit {
    *  The output objects are event emitters that trigger parent function.
    */
 
+  @Input() selection: Selection;
   @Output() setPlaylist = new EventEmitter();
   @Output() getSelection = new EventEmitter();
 
@@ -37,7 +38,14 @@ export class LibraryComponent implements OnInit {
 
   ngOnInit() {
     setTimeout(() => {
-      this.getArtists();
+      if (this.selection != null) {
+        this.setLibrarySelections(this.selection.artist.id, this.selection.album.id, this.selection.song.id);
+        this.getArtists();
+        this.getAlbums(this.selection.artist.id);
+        this.getSongs(this.selection.artist.id, this.selection.album.id);
+      } else {
+        this.getArtists();
+      }
     }, 500);
   }
 
@@ -75,10 +83,26 @@ export class LibraryComponent implements OnInit {
     this.restService.getSongs(artistId, albumId).subscribe(songs => this.songs = songs);
   }
 
+  /*
+   *  Stores the selected song ID and makes a call to the parent component to
+   *  Retrieve a "Selection" object, which essentially contains
+   *  an artist, album, and song object together for full song playback info.
+   *  Also stores the playlist for album playback use in the player component.
+   */
+
   getSong(artistId: String, albumId: String, songId: String) {
     this.songIdSelected = songId;
     this.setPlaylist.emit(this.songs);  //For playback through album in player.
     this.getSelection.emit({artistId, albumId, songId});
+  }
+
+  /*
+   *  Sets the selected artist, album, and song names using their given IDs.
+   */
+  setLibrarySelections(artistId: number, albumId: number, songId: number) {
+    this.artistIdSelected = artistId;
+    this.albumIdSelected = albumId;
+    this.songIdSelected = songId;
   }
 
 }

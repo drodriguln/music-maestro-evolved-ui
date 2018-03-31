@@ -12,16 +12,17 @@
       </ul>
     </div>
   </div>
-</div>
-<div id="library" class="collapse" *ngIf="isActiveMenuSection[0]">
-  <app-library (playlist)="playlist($event)" (getSelection)="getSelection($event)">
-    Loading Library Component...
-  </app-library>
+  <div id="library" class="collapse" *ngIf="isActiveMenuSection[0]">
+    <app-library [selection]="selection"
+    (setPlaylist)="setPlaylist($event)" (getSelection)="getSelection($event)">
+      Loading Library Component...
+    </app-library>
+  </div>
 </div>
 <div *ngIf="isPlayerLoaded">
   <app-player
   [playlist]="playlist" [selection]="selection" [selSongId]="selSongId"
-  (getSongInfo)="getSelection($event)">
+  (getSelection)="getSelection($event)">
     Loading Player Component...
   </app-player>
 </div>

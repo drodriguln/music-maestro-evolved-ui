@@ -20,7 +20,7 @@ export class PlayerComponent {
   @Input() selSongId: string;
   @Input() selection: Selection;
   @Input() playlist: Array<Song>;
-  @Output() getSongInfo = new EventEmitter();
+  @Output() getSelection = new EventEmitter();
 
   /*
    *  Instance variables and objects.
@@ -135,13 +135,22 @@ export class PlayerComponent {
    *  If there is no existing previous song, then do nothing.
    */
   previous() {
-    if (this.playlist.length > 1) {
+    let artistId = this.selection.artist.id;
+    let albumId = this.selection.album.id;
+    let songId = "0";
+    if (this.doRepeat) {
+      songId = this.selection.song.id
+      this.getSelection.emit({artistId, albumId, songId});
+    } else if (this.doShuffle) {
+      songId = this.getShuffledSongId(this.playlist, this.selSongId);
+      this.getSelection.emit({artistId, albumId, songId});
+    } else if (this.playlist.length > 1) {
       for (let i = 0; i < this.playlist.length; i++) {
         if (this.playlist[i].id == this.selection.song.id && i > 0) {
           let artistId = this.selection.artist.id;
           let albumId = this.selection.album.id;
           let songId = this.playlist[i-1].id
-          this.getSongInfo.emit({artistId, albumId, songId});
+          this.getSelection.emit({artistId, albumId, songId});
           break;
         }
       }
@@ -163,23 +172,20 @@ export class PlayerComponent {
     let songId = "0";
     if (this.doRepeat) {
       songId = this.selection.song.id
-      this.getSongInfo.emit({artistId, albumId, songId});
-    }
-    else if (this.doShuffle) {
+      this.getSelection.emit({artistId, albumId, songId});
+    } else if (this.doShuffle) {
       songId = this.getShuffledSongId(this.playlist, this.selSongId);
-      this.getSongInfo.emit({artistId, albumId, songId});
-    }
-    else if (this.playlist.length > 1) {
+      this.getSelection.emit({artistId, albumId, songId});
+    } else if (this.playlist.length > 1) {
       for (let i = 0; i < this.playlist.length; i++) {
         if (this.playlist[i].id == this.selection.song.id && i < this.playlist.length - 1) {
           songId = this.playlist[i+1].id;
           this.stop();
-          this.getSongInfo.emit({artistId, albumId, songId});
+          this.getSelection.emit({artistId, albumId, songId});
           break;
         }
       }
-    }
-    else {
+    } else {
       this.stop();
     }
   }
