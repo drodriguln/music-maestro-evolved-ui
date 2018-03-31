@@ -3,6 +3,7 @@ import { Artist } from '../model/Artist';
 import { Album } from '../model/Album';
 import { Song } from '../model/Song';
 import { Selection } from '../model/Selection';
+import { config } from '../../config/config';
 
 @Component({
   selector: 'app-player',
@@ -62,7 +63,7 @@ export class PlayerComponent {
    */
   load() {
     if (this.audio == null) { this.audio = new Audio(); }
-    this.songArtworkSrc = "http://localhost:8080"
+    this.songArtworkSrc = config.apiHost
       + "/artists/" + this.selection.artist.id
       + "/albums/" + this.selection.album.id
       + "/songs/" + this.selection.song.id
@@ -77,7 +78,7 @@ export class PlayerComponent {
         self.play();
       }, 200);
     });
-    xhr.open('GET', "http://localhost:8080"
+    xhr.open('GET', config.apiHost
       + "/artists/" + this.selection.artist.id
       + "/albums/" + this.selection.album.id
       + "/songs/" + this.selection.song.id
