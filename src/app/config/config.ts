@@ -3,5 +3,5 @@
  *  that imports it.
  */
 export var config = {
-  apiHost: "http://localhost:8080"
+  apiHost: "https://music-master-evolved-api.herokuapp.com"
 }
