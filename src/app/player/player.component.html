@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-4">
-      <img id="album-art" class="img-responsive img-rounded img-border" src="{{songArtworkSrc}}">
+      <img id="album-art" class="img-responsive img-rounded img-border" src="{{artworkPath}}">
     </div>
     <div class="col-sm-8">
       <div class="row">
@@ -35,12 +35,12 @@
       </div>
       <div id="play-progress-text" class="row">
         <div class="col-sm-12">
-          {{currPlayPosFormatted}} / {{maxPlayPosFormatted}}
+          {{currPlaytimeFormatted}} / {{maxPlaytimeFormatted}}
         </div>
       </div>
       <div id="play-progress-bar" class="row">
         <div class="col-sm-12">
-          <input (change)="changePos($event.target.value)" type="range" step="0.001" min="0" value="{{currPlayPos}}" max="{{maxPlayPos}}">
+          <input (change)="changePlaytime($event.target.value)" type="range" step="0.001" min="0" value="{{currPlaytime}}" max="{{maxPlaytime}}">
         </div>
       </div>
       <div id="playback-controls" class="row">

@@ -5,10 +5,7 @@ import { Song } from './Song';
 
 @Injectable()
 export class Selection {
-  artist: Artist;
-  album: Album;
-  song: Song;
-  constructor(artist: Artist, album: Album, song: Song) {
+  constructor(public artist: Artist, public album: Album, public song: Song) {
     this.artist = artist;
     this.album = album;
     this.song = song;
