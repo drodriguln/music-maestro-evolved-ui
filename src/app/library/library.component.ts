@@ -16,12 +16,9 @@ export class LibraryComponent implements OnInit {
   @Output() setPlaylist = new EventEmitter();
   @Output() getSelection = new EventEmitter();
 
-  //The IDs for the selections in the library's artist, album, and song lists.
   artistIdSelected: String;
   albumIdSelected: String;
   songIdSelected: String;
-
-  //The lists of artists, albums, and songs pulled from the server.
   artists: Array<Artist>;
   albums: Array<Album>;
   songs: Array<Song>;

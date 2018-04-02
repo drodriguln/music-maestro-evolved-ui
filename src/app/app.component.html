@@ -9,6 +9,13 @@
             Library
           </a>
         </li>
+        <li data-toggle="collapse" data-target="#upload"
+        (click)="setActiveTab(1)" [ngClass]="{'active' : isActiveMenuSection[1]}">
+          <a href="#">
+            <i class="glyphicon glyphicon-cloud-upload"></i>
+            Upload
+          </a>
+        </li>
       </ul>
     </div>
   </div>
@@ -18,10 +25,14 @@
       Loading Library Component...
     </app-library>
   </div>
+  <div id="upload" class="collapse" *ngIf="isActiveMenuSection[1]">
+    <app-upload (exitMenu)="exitMenu()">
+      Loading Upload Component...
+    </app-upload>
+  </div>
 </div>
 <div *ngIf="isPlayerLoaded">
-  <app-player
-  [playlist]="playlist" [selection]="selection"
+  <app-player [playlist]="playlist" [selection]="selection"
   (getSelection)="getSelection($event)">
     Loading Player Component...
   </app-player>

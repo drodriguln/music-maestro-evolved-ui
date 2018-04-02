@@ -1,0 +1,14 @@
+@media(max-width: 991px) {
+  #progress-bar p {
+    text-align: center;
+  }
+}
+
+input[type="file"] {
+  font-size: 11pt;
+  line-height: 0ex;
+}
+
+#progress-bar .progress {
+  background: #B5B5B5;
+}
