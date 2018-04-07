@@ -76,38 +76,59 @@
     </div>
     <form class="form-horizontal">
       <div class="form-group">
-        <div class="col-md-4 col-md-offset-1">
-          <div class="input-group">
-            <span class="input-group-addon">Track #</span>
-            <input type="number" min="0" class="form-control input-sm" name="newSongYear" [(ngModel)]="newSongTrackNumber">
+        <div class="col-md-1 col-md-offset-1">
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="singleUpload" [value]="true" [(ngModel)]="isSingleUpload">
+            <label class="form-check-label" for="singleUpload"><h4>Single</h4></label>
+          </div>
+        </div>
+        <div class="col-md-1">
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="multiUpload" [value]="false" [(ngModel)]="isSingleUpload">
+            <label class="form-check-label" for="multiUpload"><h4>Multiple</h4></label>
           </div>
         </div>
       </div>
     </form>
-    <form class="form-horizontal">
-      <div class="form-group">
-        <div class="col-md-4 col-md-offset-1">
-          <div class="input-group">
-            <span class="input-group-addon">Name</span>
-            <input type="text" class="form-control input-sm" name="newSongYear" [(ngModel)]="newSongName">
+    <div *ngIf="isSingleUpload">
+      <form class="form-horizontal">
+        <div class="form-group">
+          <div class="col-md-4 col-md-offset-1">
+            <div class="input-group">
+              <span class="input-group-addon">Track #</span>
+              <input type="number" min="0" class="form-control input-sm" name="newSongYear" [(ngModel)]="newSongTrackNumber">
+            </div>
           </div>
         </div>
-      </div>
-    </form>
+      </form>
+      <form class="form-horizontal">
+        <div class="form-group">
+          <div class="col-md-4 col-md-offset-1">
+            <div class="input-group">
+              <span class="input-group-addon">Name</span>
+              <input type="text" class="form-control input-sm" name="newSongYear" [(ngModel)]="newSongName">
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
     <form class="form-horizontal">
       <div class="form-group">
         <div class="col-md-4 col-md-offset-1">
+          <form>
           <div class="input-group">
             <span class="input-group-addon">Year</span>
             <input type="text" class="form-control input-sm" name="newSongYear" [(ngModel)]="newSongYear">
           </div>
+          </form>
         </div>
       </div>
     </form>
   </div>
-  <div *ngIf="newSongTrackNumber != undefined && newSongTrackNumber > 0
+  <div *ngIf="(!isSingleUpload && newSongYear != undefined && newSongYear.length > 0)
+    || (isSingleUpload && newSongTrackNumber != undefined && newSongTrackNumber > 0
     && newSongName != undefined && newSongName.length > 0
-    && newSongYear != undefined && newSongYear.length > 0">
+    && newSongYear != undefined && newSongYear.length > 0)">
     <div class="row text-list">
       <div class="col-md-3 col-md-offset-1">
         <div class="text-list-title">Files</div>
@@ -126,11 +147,11 @@
         Song:
       </div>
       <div class="col-md-4">
-        <input type="file" name="song" placeholder="Upload Song" accept=".mp3" (change)="setSongFile($event.target.files)">
+        <input type="file" name="song" placeholder="Upload Song" accept=".mp3" (change)="setSongFiles($event.target.files)" [attr.multiple]="!isSingleUpload ? true : null">
       </div>
     </div>
   </div>
-  <div *ngIf="artworkFile != null && songFile != null">
+  <div *ngIf="artworkFile != null && songFiles != null">
     <div class="row">
       <div class="col-md-1 col-md-offset-1">
         <button class="btn btn-success btn-md" (click)="upload()">Upload</button>

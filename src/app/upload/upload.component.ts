@@ -16,6 +16,7 @@ export class UploadComponent {
   isUploading: boolean = false;
   isNewArtist: boolean = false;
   isNewAlbum: boolean = false;
+  isSingleUpload: boolean = true;
   newArtistName: string;
   newAlbumName: string;
   newSongName: string;
@@ -24,7 +25,7 @@ export class UploadComponent {
   artistSelected: Artist;
   albumSelected: Album;
   artworkFile: File;
-  songFile: File;
+  songFiles: FileList;
   artists: Array<Artist>;
   albums: Array<Album>;
   currProgress: number = 0;
@@ -44,9 +45,9 @@ export class UploadComponent {
 
   setAlbum(album: Album) { this.albumSelected = album; }
 
-  setArtworkFile(artworkFiles: FileList) { this.artworkFile = artworkFiles[0]; }
+  setArtworkFile(artworkFiles: File) { this.artworkFile = artworkFiles[0]; }
 
-  setSongFile(songFiles: FileList) { this.songFile = songFiles[0]; }
+  setSongFiles(songFiles: FileList) { this.songFiles = songFiles; }
 
   /*
    *  Takes a list of files selected in the view, and sends them one-by-one to
@@ -77,27 +78,52 @@ export class UploadComponent {
   }
 
   sendFormData(artistId: string, albumId: string) {
-    let formData: FormData = new FormData();
-    formData.append('songName', this.newSongName);
-    formData.append('trackNumber', this.newSongTrackNumber);
-    formData.append('year', this.newSongYear);
-    formData.append('artwork', this.artworkFile);
-    formData.append('song', this.songFile);
     this.isUploading = true;   //Used in view to show progress bar.
-    this.maxProgress = 1; //Sets the new max value for progress bar.
-    this.restService.addSong(artistId, albumId, formData).subscribe(() => {  //Send song to server.
-      this.currProgress++; //Increment the current value for progress bar.
-      setTimeout( () => { //Delay 0.8 seconds.
-        this.exitMenu.emit();  //Clears out of current menu.
-        this.resetProgressBar(); //Resets the current and max values for the progress bar.
-        this.isUploading = false; //Used in view to hide progress bar.
-      }, 800);
-    });
+    this.maxProgress = this.songFiles.length; //Sets the new max value for progress bar.
+    for (let i = 0; i < this.songFiles.length; i++) { //Loop through list of files.
+      let formData: FormData = new FormData();
+      if (this.isSingleUpload) {
+        formData.append('songName', this.newSongName);
+        formData.append('trackNumber', this.newSongTrackNumber);
+      } else {
+        formData.append('songName', "");
+        formData.append('trackNumber', i+1);
+      }
+      formData.append('year', this.newSongYear);
+      formData.append('artwork', this.artworkFile);
+      formData.append('song', this.songFiles[i]);
+      this.restService.addSong(artistId, albumId, formData).subscribe(() => {  //Send song to server.
+        this.currProgress++; //Increment the current value for progress bar.
+        if (i == this.songFiles.length - 1) { //During last loop,
+          setTimeout( () => { //Delay 0.8 seconds.
+            this.exitMenu.emit();  //Clears out of current menu.
+            this.resetProgressBar(); //Resets the current and max values for the progress bar.
+            this.isUploading = false; //Used in view to hide progress bar.
+            this.resetFormData;
+          }, 800);
+        }
+      });
     }
+  }
 
   resetProgressBar() {
     this.currProgress = 0;
     this.maxProgress = 1;
+  }
+
+  resetFormData() {
+    this.isNewArtist = false;
+    this.isNewAlbum = false;
+    this.isSingleUpload = true;
+    this.newArtistName = undefined;
+    this.newAlbumName = undefined;
+    this.newSongName = undefined
+    this.newSongTrackNumber = undefined;
+    this.newSongYear = undefined;
+    this.artistSelected = undefined;
+    this.albumSelected = undefined;
+    this.artworkFile = undefined;
+    this.songFiles = undefined;
   }
 
 }
