@@ -12,3 +12,14 @@ input[type="file"] {
 #progress-bar .progress {
   background: #B5B5B5;
 }
+
+li.active > a:enabled {
+  border-bottom: 2px solid Crimson;
+  color: Gray;
+  background-color: transparent;
+}
+
+li > a:hover,
+li > a:focus {
+  background-color: transparent;
+}

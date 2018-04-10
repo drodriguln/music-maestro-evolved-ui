@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { RestService } from './service/rest/rest.service';
 import { AppComponent } from './app.component';
 import { LibraryComponent } from './library/library.component';
+import { EditComponent } from './edit/edit.component';
 import { UploadComponent } from './upload/upload.component';
 import { PlayerComponent } from './player/player.component';
 
@@ -13,6 +14,7 @@ import { PlayerComponent } from './player/player.component';
   declarations: [
     AppComponent,
     LibraryComponent,
+    EditComponent,
     UploadComponent,
     PlayerComponent
   ],

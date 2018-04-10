@@ -1,0 +1,17 @@
+.dropdown-edit {
+  max-width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+li.active > a:enabled {
+  border-bottom: 2px solid Crimson;
+  color: Gray;
+  background-color: transparent;
+}
+
+li > a:hover,
+li > a:focus {
+  background-color: transparent;
+}

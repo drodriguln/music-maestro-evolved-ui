@@ -9,8 +9,15 @@
             Library
           </a>
         </li>
-        <li data-toggle="collapse" data-target="#upload"
+        <li class="border" data-toggle="collapse" data-target="#edit"
         (click)="setActiveTab(1)" [ngClass]="{'active' : isActiveMenuSection[1]}">
+          <a href="#">
+            <i class="glyphicon glyphicon-pencil"></i>
+            Edit
+          </a>
+        </li>
+        <li data-toggle="collapse" data-target="#upload"
+        (click)="setActiveTab(2)" [ngClass]="{'active' : isActiveMenuSection[2]}">
           <a href="#">
             <i class="glyphicon glyphicon-cloud-upload"></i>
             Upload
@@ -21,11 +28,16 @@
   </div>
   <div id="library" class="collapse" *ngIf="isActiveMenuSection[0]">
     <app-library [selection]="selection"
-    (setPlaylist)="setPlaylist($event)" (getSelection)="getSelection($event)">
+    (setPlaylist)="setPlaylist($event)" (getSelection)="getSelection($event)" (exitMenu)="exitMenu()">
       Loading Library Component...
     </app-library>
   </div>
-  <div id="upload" class="collapse" *ngIf="isActiveMenuSection[1]">
+  <div id="edit" class="collapse" *ngIf="isActiveMenuSection[1]">
+    <app-edit [selection]="selection">
+      Loading Edit Component...
+    </app-edit>
+  </div>
+  <div id="upload" class="collapse" *ngIf="isActiveMenuSection[2]">
     <app-upload (exitMenu)="exitMenu()">
       Loading Upload Component...
     </app-upload>

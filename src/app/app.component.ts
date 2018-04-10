@@ -1,5 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { LibraryComponent } from './library/library.component';
+import { EditComponent } from './edit/edit.component';
 import { UploadComponent } from './upload/upload.component';
 import { PlayerComponent } from './player/player.component';
 import { RestService } from './service/rest/rest.service';
@@ -17,6 +18,8 @@ export class AppComponent {
 
   @ViewChild(LibraryComponent)
   private library: LibraryComponent;
+  @ViewChild(EditComponent)
+  private edit: EditComponent;
   @ViewChild(UploadComponent)
   private upload: UploadComponent;
   @ViewChild(PlayerComponent)
@@ -27,7 +30,7 @@ export class AppComponent {
   songs: Array<Song>;
   playlist: Array<Song>;
   selection: Selection;
-  isActiveMenuSection: Array<boolean> = [false, false];
+  isActiveMenuSection: Array<boolean> = [false, false, false];
   isPlayerLoaded: boolean = false;
 
   constructor(private restService: RestService) { }

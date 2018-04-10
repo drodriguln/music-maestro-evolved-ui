@@ -87,7 +87,7 @@ export class UploadComponent {
         formData.append('trackNumber', this.newSongTrackNumber);
       } else {
         formData.append('songName', "");
-        formData.append('trackNumber', i+1);
+        formData.append('trackNumber', String(i+1));
       }
       formData.append('year', this.newSongYear);
       formData.append('artwork', this.artworkFile);

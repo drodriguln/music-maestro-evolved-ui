@@ -6,6 +6,4 @@ export class Song {
   name: string;
   trackNumber: string;
   year: string;
-  fileId: string;
-  artworkFileId: string;
 }
