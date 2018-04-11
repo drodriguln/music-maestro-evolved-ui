@@ -40,7 +40,6 @@ export class AppComponent {
   }
 
   getSelection(event) {
-    this.exitMenu();
     this.stopPlayer();
     if (this.selection != null && this.selection.album.id != event.albumId) {
       this.reloadPlayer();
@@ -78,7 +77,6 @@ export class AppComponent {
   }
 
   loadPlayer() {
-    this.exitMenu();
     setTimeout( () => this.player.load(), 200);
   }
 

@@ -5,27 +5,25 @@
       <div class="text-list-title">Artist</div>
     </div>
   </div>
-  <div class="row">
-    <div class="col-md-3 col-md-offset-1">
-      <div class="dropdown">
-        <button class="btn btn-default dropdown-toggle" type="button" id="artistSelect"
-        data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" [disabled]="isNewArtist">
-          {{artistSelected != null ? artistSelected.name : 'Select an Artist'}}
-          <span class="caret"></span>
-        </button>
-        <ul class="dropdown-menu" aria-labelledby="artistSelect">
-          <li *ngFor="let artist of artists"><a href="#" (click)="setArtist(artist)">{{artist.name}}</a></li>
-        </ul>
-      </div>
-    </div>
-  </div>
   <form class="form-horizontal">
     <div class="form-group">
-      <div class="col-md-4 col-md-offset-1">
-        <div class="input-group">
+      <div class="col-md-3 col-md-offset-1">
+        <div class="dropdown fill-width">
+          <button class="btn btn-default dropdown-toggle dropdown-edit" type="button" id="artistSelect"
+          data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" [disabled]="isNewArtist">
+            {{artistSelected != null ? artistSelected.name : 'Select an Artist'}}
+            <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="artistSelect">
+            <li *ngFor="let artist of artists"><a href="#" (click)="setArtist(artist)">{{artist.name}}</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-md-5">
+        <div class="input-group input-edit">
           <span class="input-group-addon">
             <input type="checkbox" aria-label="addArtistCheckbox" name="isNewArtist" [(ngModel)]="isNewArtist">
-            &nbsp;Add
+            &nbsp;Add Artist
           </span>
           <input type="text" class="form-control" aria-label="addArtistTextbox" name="newArtistName"
           [(ngModel)]="newArtistName" [disabled]="!isNewArtist">
@@ -39,27 +37,25 @@
         <div class="text-list-title">Album</div>
       </div>
     </div>
-    <div class="row">
-      <div class="col-md-3 col-md-offset-1">
-        <div class="dropdown">
-          <button class="btn btn-default dropdown-toggle" type="button" id="artistSelect"
-          data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" [disabled]="isNewArtist || isNewAlbum">
-            {{albumSelected != null ? albumSelected.name : 'Select an Album'}}
-            <span class="caret"></span>
-          </button>
-          <ul class="dropdown-menu" aria-labelledby="artistSelect">
-            <li *ngFor="let album of albums"><a href="#" (click)="setAlbum(album)">{{album.name}}</a></li>
-          </ul>
-        </div>
-      </div>
-    </div>
     <form class="form-horizontal">
       <div class="form-group">
-        <div class="col-md-4 col-md-offset-1">
-          <div class="input-group">
+        <div class="col-md-3 col-md-offset-1">
+          <div class="dropdown fill-width">
+            <button class="btn btn-default dropdown-toggle dropdown-edit" type="button" id="albumSelect"
+            data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" [disabled]="isNewArtist || isNewAlbum">
+              {{albumSelected != null ? albumSelected.name : 'Select an Album'}}
+              <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="artistSelect">
+              <li *ngFor="let album of albums"><a href="#" (click)="setAlbum(album)">{{album.name}}</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-md-5">
+          <div class="input-group input-edit">
             <span class="input-group-addon">
               <input type="checkbox" aria-label="addAlbumCheckbox" name="isNewAlbum" [(ngModel)]="isNewAlbum">
-              &nbsp;Add
+              &nbsp;Add Album
             </span>
             <input type="text" class="form-control" aria-label="addAlbumTextbox" name="newAlbumName"
             [(ngModel)]="newAlbumName" [disabled]="!isNewAlbum">

@@ -82,7 +82,7 @@ export class PlayerComponent {
         if (this.playlist[i].id == this.selection.song.id && i > 0) {
           artistId = this.selection.artist.id;
           albumId = this.selection.album.id;
-          songId = this.playlist[i-1].id
+          songId = this.playlist[i-1].id;
           break;
         }
       }

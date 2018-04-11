@@ -34,7 +34,17 @@ export class EditComponent {
   constructor(private restService: RestService) { }
 
   ngOnInit() {
-    setTimeout(() => this.restService.getArtists().subscribe(artists => this.artists = artists), 500);
+    setTimeout(() => this.restService.getArtists().subscribe(artists => {
+      this.artists = artists;
+      if (this.selection != undefined) {
+        this.artistSelected = Object.assign({}, this.selection.artist);
+        this.albumSelected = Object.assign({}, this.selection.album);
+        this.songSelected = Object.assign({}, this.selection.song);
+        this.artistEdited = Object.assign({}, this.selection.artist);
+        this.albumEdited = Object.assign({}, this.selection.album);
+        this.songEdited = Object.assign({}, this.selection.song);
+      }
+    }), 500);
   }
 
   setArtist(artist: Artist) {
@@ -78,6 +88,7 @@ export class EditComponent {
     this.restService.updateArtist(this.artistSelected.id, this.artistEdited).subscribe(artistResponse => {
       this.artistSelected = Object.assign({}, artistResponse.result);
       this.artistEdited = Object.assign({}, artistResponse.result);
+      this.selection.artist = Object.assign({}, artistResponse.result);
     });
   }
 
@@ -85,6 +96,7 @@ export class EditComponent {
     this.restService.updateAlbum(this.artistSelected.id, this.albumSelected.id, this.albumEdited).subscribe(albumResponse => {
       this.albumSelected = Object.assign({}, albumResponse.result);
       this.albumEdited = Object.assign({}, albumResponse.result);
+      this.selection.album = Object.assign({}, albumResponse.result);
     });
   }
 
@@ -92,6 +104,7 @@ export class EditComponent {
     this.restService.updateSong(this.artistSelected.id, this.albumSelected.id, this.songSelected.id, this.songEdited).subscribe(songResponse => {
       this.songSelected = Object.assign({}, songResponse.result);
       this.songEdited = Object.assign({}, songResponse.result);
+      this.selection.song = Object.assign({}, songResponse.result);
     });
   }
 

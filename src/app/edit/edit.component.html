@@ -17,10 +17,10 @@
         </ul>
       </div>
     </div>
-    <div *ngIf="isActiveEditSection[0] || isActiveEditSection[1] || isActiveEditSection[2]">
-      <div class="row">
-        <div class="col-md-5 col-md-offset-1">
-          <div class="dropdown">
+    <div class="row">
+      <div class="col-md-3 col-md-offset-1">
+        <span *ngIf="isActiveEditSection[0] || isActiveEditSection[1] || isActiveEditSection[2]">
+          <div class="dropdown dropdown-width">
             <button class="btn btn-default dropdown-toggle dropdown-edit" type="button" id="artistEdit"
             data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
               {{artistSelected != null ? artistSelected.name : 'Select an Artist'}}
@@ -30,13 +30,11 @@
               <li *ngFor="let artist of artists"><a href="#" (click)="setArtist(artist)">{{artist.name}}</a></li>
             </ul>
           </div>
-        </div>
+        </span>
       </div>
-    </div>
-    <div *ngIf="isActiveEditSection[1] || isActiveEditSection[2]">
-      <div class="row">
-        <div class="col-md-5 col-md-offset-1">
-          <div class="dropdown">
+      <div class="col-md-3">
+        <span *ngIf="isActiveEditSection[1] || isActiveEditSection[2]">
+          <div class="dropdown dropdown-width">
             <button class="btn btn-default dropdown-toggle dropdown-edit" type="button" id="albumEdit"
             data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
               {{albumSelected != null ? albumSelected.name : 'Select an Album'}}
@@ -46,13 +44,11 @@
               <li *ngFor="let album of albums"><a href="#" (click)="setAlbum(album)">{{album.name}}</a></li>
             </ul>
           </div>
-        </div>
+        </span>
       </div>
-    </div>
-    <div *ngIf="isActiveEditSection[2]">
-      <div class="row">
-        <div class="col-md-5 col-md-offset-1">
-          <div class="dropdown">
+      <div class="col-md-3">
+        <span *ngIf="isActiveEditSection[2]">
+          <div class="dropdown dropdown-width">
             <button class="btn btn-default dropdown-toggle dropdown-edit" type="button" id="songEdit"
             data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
               {{songSelected != null ? songSelected.name : 'Select a Song'}}
@@ -62,7 +58,7 @@
               <li *ngFor="let song of songs"><a href="#" (click)="setSong(song)">{{song.name}}</a></li>
             </ul>
           </div>
-        </div>
+        </span>
       </div>
     </div>
     <div *ngIf="isActiveEditSection[0] && artistSelected != null">
@@ -116,7 +112,8 @@
     </div>
     <div *ngIf="isActiveEditSection[0] && artistSelected != null">
       <div class="row">
-        <div class="col-md-1 col-md-offset-1">
+        <div class="col-md-1 col-md-offset-1"></div>
+        <div class="col-md-5 col-right-align">
           <button type="button" class="btn btn-success btn-sm" [disabled]="artistEdited != null && artistEdited.name.length == 0" (click)="updateArtist()">
             Save Artist
           </button>
@@ -125,7 +122,8 @@
     </div>
     <div *ngIf="isActiveEditSection[1] && artistSelected != null && albumSelected != null">
       <div class="row">
-        <div class="col-md-1 col-md-offset-1">
+        <div class="col-md-1 col-md-offset-1"></div>
+        <div class="col-md-5 col-right-align">
           <button type="button" class="btn btn-success btn-sm" [disabled]="albumEdited != null && albumEdited.name.length == 0" (click)="updateAlbum()">
             Save Album
           </button>
@@ -134,7 +132,8 @@
     </div>
     <div *ngIf="isActiveEditSection[2] && artistSelected != null && albumSelected != null && songSelected != null">
       <div class="row">
-        <div class="col-md-1 col-md-offset-1">
+        <div class="col-md-1 col-md-offset-1"></div>
+        <div class="col-md-5 col-right-align">
           <button type="button" class="btn btn-success btn-sm" (click)="updateSong()"
             [disabled]="songEdited != null && songEdited.id.length == 0 || songEdited.name.length == 0 || songEdited.year.length == 0"
           >

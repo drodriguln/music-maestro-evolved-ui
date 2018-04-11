@@ -15,6 +15,7 @@ export class LibraryComponent implements OnInit {
   @Input() selection: Selection;
   @Output() setPlaylist = new EventEmitter();
   @Output() getSelection = new EventEmitter();
+  @Output() exitMenu = new EventEmitter();
 
   artistIdSelected: String;
   albumIdSelected: String;
@@ -61,6 +62,7 @@ export class LibraryComponent implements OnInit {
     this.songIdSelected = songId;
     this.setPlaylist.emit(this.songs);  //For playback through album in player.
     this.getSelection.emit({artistId, albumId, songId});
+    this.exitMenu.emit();
   }
 
   setLibrarySelections(artistId: string, albumId: string, songId: string) {

@@ -1,5 +1,10 @@
+.dropdown-width {
+  width: 100%;
+}
+
 .dropdown-edit {
-  max-width: 100%;
+  margin-top: 10px;
+  width: inherit;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -14,4 +19,8 @@ li.active > a:enabled {
 li > a:hover,
 li > a:focus {
   background-color: transparent;
+}
+
+.col-right-align {
+  text-align: right;
 }
