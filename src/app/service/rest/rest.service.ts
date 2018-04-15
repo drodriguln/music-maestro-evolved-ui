@@ -71,4 +71,16 @@ export class RestService {
       .map((response: Response) => response.json());
   }
 
+  deleteArtist(artistId: string) {
+    return this.http.delete(config.apiHost + "/artists/" + artistId);
+  }
+
+  deleteAlbum(artistId: string, albumId: string) {
+    return this.http.delete(config.apiHost + "/artists/" + artistId + "/albums/" + albumId);
+  }
+
+  deleteSong(artistId: string, albumId: string, songId: string) {
+    return this.http.delete(config.apiHost + "/artists/" + artistId + "/albums/" + albumId + "/songs/" + songId)
+  }
+
 }

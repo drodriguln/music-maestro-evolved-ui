@@ -115,7 +115,10 @@
         <div class="col-md-1 col-md-offset-1"></div>
         <div class="col-md-5 col-right-align">
           <button type="button" class="btn btn-success btn-sm" [disabled]="artistEdited != null && artistEdited.name.length == 0" (click)="updateArtist()">
-            Save Artist
+            Save
+          </button>
+          <button type="button" class="btn btn-danger btn-sm" [disabled]="artistEdited != null && artistEdited.name.length == 0" (click)="deleteArtist()">
+            Remove
           </button>
         </div>
       </div>
@@ -125,7 +128,10 @@
         <div class="col-md-1 col-md-offset-1"></div>
         <div class="col-md-5 col-right-align">
           <button type="button" class="btn btn-success btn-sm" [disabled]="albumEdited != null && albumEdited.name.length == 0" (click)="updateAlbum()">
-            Save Album
+            Save
+          </button>
+          <button type="button" class="btn btn-danger btn-sm" [disabled]="albumEdited != null && albumEdited.name.length == 0" (click)="deleteAlbum()">
+            Remove
           </button>
         </div>
       </div>
@@ -137,7 +143,12 @@
           <button type="button" class="btn btn-success btn-sm" (click)="updateSong()"
             [disabled]="songEdited != null && songEdited.id.length == 0 || songEdited.name.length == 0 || songEdited.year.length == 0"
           >
-            Save Song
+            Save
+          </button>
+          <button type="button" class="btn btn-danger btn-sm" (click)="deleteSong()"
+            [disabled]="songEdited != null && songEdited.id.length == 0 || songEdited.name.length == 0 || songEdited.year.length == 0"
+          >
+            Remove
           </button>
         </div>
       </div>

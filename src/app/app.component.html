@@ -33,7 +33,7 @@
     </app-library>
   </div>
   <div id="edit" class="collapse" *ngIf="isActiveMenuSection[1]">
-    <app-edit [selection]="selection">
+    <app-edit [selection]="selection" (exitMenu)="exitMenu()">
       Loading Edit Component...
     </app-edit>
   </div>

@@ -108,4 +108,34 @@ export class EditComponent {
     });
   }
 
+  deleteArtist() {
+    this.restService.deleteArtist(this.artistSelected.id).subscribe(() => this.exitMenu.emit());
   }
+
+  deleteAlbum() {
+    this.restService.deleteAlbum(this.artistSelected.id, this.albumSelected.id).subscribe(() => {
+      if (this.albums.length == 1) {
+        this.restService.deleteArtist(this.artistSelected.id).subscribe(() => this.exitMenu.emit());
+      } else {
+        this.exitMenu.emit();
+      }
+    });
+  }
+
+  deleteSong() {
+    this.restService.deleteSong(this.artistSelected.id, this.albumSelected.id, this.songSelected.id).subscribe(() => {
+      if (this.songs.length == 1) {
+        this.restService.deleteAlbum(this.artistSelected.id, this.albumSelected.id).subscribe(() => {
+          if (this.albums.length == 1) {
+            this.restService.deleteArtist(this.artistSelected.id).subscribe(() => this.exitMenu.emit());
+          } else {
+            this.exitMenu.emit();
+          }
+        });
+      } else {
+        this.exitMenu.emit();
+      }
+    });
+  }
+
+}
