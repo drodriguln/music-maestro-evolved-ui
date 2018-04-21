@@ -3,6 +3,6 @@
  *  that imports it.
  */
 export var config = {
-  apiHost: "http://localhost:8080",
-  isProdEnv: false
+  apiHost: "https://music-maestro-evolved-api.herokuapp.com",
+  isProdEnv: true
 }
