@@ -34,9 +34,16 @@
     "express": "^4.16.3"
   },
   "devDependencies": {
+    "@angular/animations": "^5.1.0",
+    "@angular/common": "^5.1.0",
     "@angular/cli": "^1.6.4",
     "@angular/compiler-cli": "^5.1.0",
-    "@angular/language-service": "^5.1.0",
+    "@angular/core": "^5.1.0",
+    "@angular/forms": "^5.1.0",
+    "@angular/http": "^5.1.0",
+    "@angular/platform-browser": "^5.1.0",
+    "@angular/platform-browser-dynamic": "^5.1.0",
+    "@angular/router": "^5.1.0",
     "@types/jasmine": "~2.8.3",
     "@types/jasminewd2": "~2.0.2",
     "@types/node": "~6.0.60",
