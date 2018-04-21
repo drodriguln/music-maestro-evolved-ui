@@ -18,3 +18,7 @@
 #nav-bar li > a:focus {
   background-color: transparent;
 }
+
+#alert-header {
+  margin-bottom: 0;
+}

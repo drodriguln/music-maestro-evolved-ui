@@ -4,6 +4,7 @@ import { Artist } from '../model/Artist';
 import { Album } from '../model/Album';
 import { Song } from '../model/Song';
 import { Selection } from '../model/Selection';
+import { config } from '../config/config';
 
 @Component({
   selector: 'app-edit',
@@ -30,6 +31,7 @@ export class EditComponent {
   albumEdited: Album;
   songEdited: Song;
   isActiveEditSection: Array<boolean> = [true, false, false];
+  isProdEnv: boolean = config.isProdEnv;
 
   constructor(private restService: RestService) { }
 

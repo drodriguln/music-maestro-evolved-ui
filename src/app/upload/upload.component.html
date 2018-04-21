@@ -142,7 +142,9 @@
   <div *ngIf="artworkFile != null && songFiles != null">
     <div class="row">
       <div class="col-md-1 col-md-offset-1">
-        <button class="btn btn-success btn-md" (click)="upload()">Upload</button>
+        <button class="btn btn-success btn-md" (click)="upload()" [disabled]="isProdEnv">
+          Upload
+        </button>
       </div>
     </div>
     <br />

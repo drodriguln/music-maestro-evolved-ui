@@ -8,6 +8,7 @@ import { Artist } from './model/Artist';
 import { Album } from './model/Album';
 import { Song } from './model/Song';
 import { Selection } from './model/Selection';
+import { config } from './config/config';
 
 @Component({
   selector: 'app-root',
@@ -32,6 +33,7 @@ export class AppComponent {
   selection: Selection;
   isActiveMenuSection: Array<boolean> = [false, false, false];
   isPlayerLoaded: boolean = false;
+  isProdEnv: boolean = config.isProdEnv;
 
   constructor(private restService: RestService) { }
 

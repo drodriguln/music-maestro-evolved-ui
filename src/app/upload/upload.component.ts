@@ -3,6 +3,7 @@ import { Artist } from '../model/Artist';
 import { Album } from '../model/Album';
 import { Song } from '../model/Song';
 import { RestService } from '../service/rest/rest.service';
+import { config } from '../config/config';
 
 @Component({
   selector: 'app-upload',
@@ -17,6 +18,7 @@ export class UploadComponent {
   isNewArtist: boolean = false;
   isNewAlbum: boolean = false;
   isSingleUpload: boolean = true;
+  isProdEnv: boolean = config.isProdEnv;
   newArtistName: string;
   newAlbumName: string;
   newSongName: string;

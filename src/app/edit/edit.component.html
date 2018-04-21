@@ -141,12 +141,12 @@
         <div class="col-md-1 col-md-offset-1"></div>
         <div class="col-md-5 col-right-align">
           <button type="button" class="btn btn-success btn-sm" (click)="updateSong()"
-            [disabled]="songEdited != null && songEdited.id.length == 0 || songEdited.name.length == 0 || songEdited.year.length == 0"
+            [disabled]="isProdEnv && songEdited != null && songEdited.id.length == 0 || songEdited.name.length == 0 || songEdited.year.length == 0"
           >
             Save
           </button>
           <button type="button" class="btn btn-danger btn-sm" (click)="deleteSong()"
-            [disabled]="songEdited != null && songEdited.id.length == 0 || songEdited.name.length == 0 || songEdited.year.length == 0"
+            [disabled]="isProdEnv && songEdited != null && songEdited.id.length == 0 || songEdited.name.length == 0 || songEdited.year.length == 0"
           >
             Remove
           </button>

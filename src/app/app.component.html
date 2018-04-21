@@ -1,3 +1,7 @@
+<div *ngIf="isProdEnv" id="alert-header" class="alert alert-danger alert-dismissible" role="alert">
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+  <strong>RESTRICTED ACCESS:</strong> You will be unable to edit or upload songs.
+</div>
 <div id="menu" class="well">
   <div id="nav-bar" class="row">
     <div class="col-md-6 col-md-offset-1">
