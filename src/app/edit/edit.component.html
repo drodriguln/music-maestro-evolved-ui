@@ -114,10 +114,10 @@
       <div class="row">
         <div class="col-md-1 col-md-offset-1"></div>
         <div class="col-md-5 col-right-align">
-          <button type="button" class="btn btn-success btn-sm" [disabled]="artistEdited != null && artistEdited.name.length == 0" (click)="updateArtist()">
+          <button type="button" class="btn btn-success btn-sm" [disabled]="isProdEnv || (artistEdited != null && artistEdited.name.length == 0)" (click)="updateArtist()">
             Save
           </button>
-          <button type="button" class="btn btn-danger btn-sm" [disabled]="artistEdited != null && artistEdited.name.length == 0" (click)="deleteArtist()">
+          <button type="button" class="btn btn-danger btn-sm" [disabled]="isProdEnv || (artistEdited != null && artistEdited.name.length == 0)" (click)="deleteArtist()">
             Remove
           </button>
         </div>
@@ -127,10 +127,10 @@
       <div class="row">
         <div class="col-md-1 col-md-offset-1"></div>
         <div class="col-md-5 col-right-align">
-          <button type="button" class="btn btn-success btn-sm" [disabled]="albumEdited != null && albumEdited.name.length == 0" (click)="updateAlbum()">
+          <button type="button" class="btn btn-success btn-sm" [disabled]="isProdEnv || (albumEdited != null && albumEdited.name.length == 0)" (click)="updateAlbum()">
             Save
           </button>
-          <button type="button" class="btn btn-danger btn-sm" [disabled]="albumEdited != null && albumEdited.name.length == 0" (click)="deleteAlbum()">
+          <button type="button" class="btn btn-danger btn-sm" [disabled]="isProdEnv || (albumEdited != null && albumEdited.name.length == 0)" (click)="deleteAlbum()">
             Remove
           </button>
         </div>
@@ -141,12 +141,12 @@
         <div class="col-md-1 col-md-offset-1"></div>
         <div class="col-md-5 col-right-align">
           <button type="button" class="btn btn-success btn-sm" (click)="updateSong()"
-            [disabled]="isProdEnv && songEdited != null && songEdited.id.length == 0 || songEdited.name.length == 0 || songEdited.year.length == 0"
+            [disabled]="isProdEnv || (songEdited != null && songEdited.id.length == 0 || songEdited.name.length == 0 || songEdited.year.length == 0)"
           >
             Save
           </button>
           <button type="button" class="btn btn-danger btn-sm" (click)="deleteSong()"
-            [disabled]="isProdEnv && songEdited != null && songEdited.id.length == 0 || songEdited.name.length == 0 || songEdited.year.length == 0"
+            [disabled]="isProdEnv || (songEdited != null && songEdited.id.length == 0 || songEdited.name.length == 0 || songEdited.year.length == 0)"
           >
             Remove
           </button>
