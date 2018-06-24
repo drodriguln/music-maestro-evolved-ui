@@ -36,7 +36,6 @@ export class PlayerComponent {
   }
 
   play() {
-    console.log("PLAY");
     let self = this;
     self.playback.addEventListener('ended', function() {
       self.playback = null;

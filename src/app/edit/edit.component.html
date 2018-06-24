@@ -11,23 +11,47 @@
     <div class="row">
       <div class="col-md-5 col-md-offset-1">
         <ul class="nav nav-pills">
-          <li data-toggle="tab" [attr.active]="isActiveEditSection[0]" (click)="setActiveTab(0)" class="active"><a href="#">Edit Artist</a></li>
-          <li data-toggle="tab" [attr.active]="isActiveEditSection[1]" (click)="setActiveTab(1)"><a href="#">Edit Album</a></li>
-          <li data-toggle="tab" [attr.active]="isActiveEditSection[2]" (click)="setActiveTab(2)"><a href="#">Edit Song</a></li>
+          <li
+            data-toggle="tab" [attr.active]="isActiveEditSection[0]"
+            (click)="setActiveTab(0)" class="active"
+          >
+            <a href="#">Edit Artist</a>
+          </li>
+          <li
+            data-toggle="tab" [attr.active]="isActiveEditSection[1]"
+            (click)="setActiveTab(1)"
+          >
+            <a href="#">Edit Album</a>
+          </li>
+          <li
+            data-toggle="tab" [attr.active]="isActiveEditSection[2]"
+            (click)="setActiveTab(2)"
+          >
+            <a href="#">Edit Song</a>
+          </li>
         </ul>
       </div>
     </div>
     <div class="row">
       <div class="col-md-3 col-md-offset-1">
-        <span *ngIf="isActiveEditSection[0] || isActiveEditSection[1] || isActiveEditSection[2]">
+        <span
+          *ngIf="isActiveEditSection[0]
+            || isActiveEditSection[1]
+            || isActiveEditSection[2]"
+        >
           <div class="dropdown dropdown-width">
-            <button class="btn btn-default dropdown-toggle dropdown-edit" type="button" id="artistEdit"
-            data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+            <button
+              class="btn btn-default dropdown-toggle dropdown-edit"
+              type="button" id="artistEdit" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="true"
+            >
               {{artistSelected != null ? artistSelected.name : 'Select an Artist'}}
               <span class="caret"></span>
             </button>
             <ul class="dropdown-menu" aria-labelledby="artistEdit">
-              <li *ngFor="let artist of artists"><a href="#" (click)="setArtist(artist)">{{artist.name}}</a></li>
+              <li *ngFor="let artist of artists">
+                <a href="#" (click)="setArtist(artist)">{{artist.name}}</a>
+              </li>
             </ul>
           </div>
         </span>
@@ -35,13 +59,18 @@
       <div class="col-md-3">
         <span *ngIf="isActiveEditSection[1] || isActiveEditSection[2]">
           <div class="dropdown dropdown-width">
-            <button class="btn btn-default dropdown-toggle dropdown-edit" type="button" id="albumEdit"
-            data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+            <button
+              class="btn btn-default dropdown-toggle dropdown-edit"
+              type="button" id="albumEdit" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="true"
+            >
               {{albumSelected != null ? albumSelected.name : 'Select an Album'}}
               <span class="caret"></span>
             </button>
             <ul class="dropdown-menu" aria-labelledby="albumEdit">
-              <li *ngFor="let album of albums"><a href="#" (click)="setAlbum(album)">{{album.name}}</a></li>
+              <li *ngFor="let album of albums">
+                <a href="#" (click)="setAlbum(album)">{{album.name}}</a>
+              </li>
             </ul>
           </div>
         </span>
@@ -49,13 +78,18 @@
       <div class="col-md-3">
         <span *ngIf="isActiveEditSection[2]">
           <div class="dropdown dropdown-width">
-            <button class="btn btn-default dropdown-toggle dropdown-edit" type="button" id="songEdit"
-            data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+            <button
+              class="btn btn-default dropdown-toggle dropdown-edit"
+              type="button" id="songEdit" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="true"
+            >
               {{songSelected != null ? songSelected.name : 'Select a Song'}}
               <span class="caret"></span>
             </button>
             <ul class="dropdown-menu" aria-labelledby="songEdit">
-              <li *ngFor="let song of songs"><a href="#" (click)="setSong(song)">{{song.name}}</a></li>
+              <li *ngFor="let song of songs">
+                <a href="#" (click)="setSong(song)">{{song.name}}</a>
+              </li>
             </ul>
           </div>
         </span>
@@ -68,29 +102,47 @@
           Name:
         </div>
         <div class="col-md-5">
-          <input type="text" class="form-control input-md" [(ngModel)]="artistEdited.name">
+          <input
+            type="text" class="form-control input-md"
+            [(ngModel)]="artistEdited.name"
+          >
         </div>
       </div>
     </div>
-    <div *ngIf="isActiveEditSection[1] && artistSelected != null && albumSelected != null">
+    <div
+      *ngIf="isActiveEditSection[1]
+        && artistSelected != null
+        && albumSelected != null"
+    >
       <hr />
       <div class="row">
         <div class="col-md-1 col-md-offset-1">
           Name:
         </div>
         <div class="col-md-5">
-          <input type="text" class="form-control input-md" [(ngModel)]="albumEdited.name">
+          <input
+            type="text" class="form-control input-md"
+            [(ngModel)]="albumEdited.name"
+          >
         </div>
       </div>
     </div>
-    <div *ngIf="isActiveEditSection[2] && artistSelected != null && albumSelected != null && songSelected != null">
+    <div
+      *ngIf="isActiveEditSection[2]
+        && artistSelected != null
+        && albumSelected != null
+        && songSelected != null"
+    >
       <hr />
       <div class="row">
         <div class="col-md-1 col-md-offset-1">
           #:
         </div>
         <div class="col-md-5">
-          <input type="number" min="0" class="form-control input-md" [(ngModel)]="songEdited.trackNumber">
+          <input
+            type="number" min="0" class="form-control input-md"
+            [(ngModel)]="songEdited.trackNumber"
+          >
         </div>
       </div>
       <div class="row">
@@ -98,7 +150,10 @@
           Name:
         </div>
         <div class="col-md-5">
-          <input type="text" class="form-control input-md" [(ngModel)]="songEdited.name">
+          <input
+            type="text" class="form-control input-md"
+            [(ngModel)]="songEdited.name"
+          >
         </div>
       </div>
       <div class="row">
@@ -106,7 +161,10 @@
           Year:
         </div>
         <div class="col-md-5">
-          <input type="text" class="form-control input-md" [(ngModel)]="songEdited.year">
+          <input
+            type="text" class="form-control input-md"
+            [(ngModel)]="songEdited.year"
+          >
         </div>
       </div>
     </div>
@@ -114,39 +172,72 @@
       <div class="row">
         <div class="col-md-1 col-md-offset-1"></div>
         <div class="col-md-5 col-right-align">
-          <button type="button" class="btn btn-success btn-sm" [disabled]="artistEdited != null && artistEdited.name.length == 0" (click)="updateArtist()">
-            Save
-          </button>
-          <button type="button" class="btn btn-danger btn-sm" [disabled]="artistEdited != null && artistEdited.name.length == 0" (click)="deleteArtist()">
-            Remove
-          </button>
-        </div>
-      </div>
-    </div>
-    <div *ngIf="isActiveEditSection[1] && artistSelected != null && albumSelected != null">
-      <div class="row">
-        <div class="col-md-1 col-md-offset-1"></div>
-        <div class="col-md-5 col-right-align">
-          <button type="button" class="btn btn-success btn-sm" [disabled]="albumEdited != null && albumEdited.name.length == 0" (click)="updateAlbum()">
-            Save
-          </button>
-          <button type="button" class="btn btn-danger btn-sm" [disabled]="albumEdited != null && albumEdited.name.length == 0" (click)="deleteAlbum()">
-            Remove
-          </button>
-        </div>
-      </div>
-    </div>
-    <div *ngIf="isActiveEditSection[2] && artistSelected != null && albumSelected != null && songSelected != null">
-      <div class="row">
-        <div class="col-md-1 col-md-offset-1"></div>
-        <div class="col-md-5 col-right-align">
-          <button type="button" class="btn btn-success btn-sm" (click)="updateSong()"
-            [disabled]="songEdited != null && songEdited.id.length == 0 || songEdited.name.length == 0 || songEdited.year.length == 0"
+          <button
+            type="button" class="btn btn-success btn-sm"
+            [disabled]="artistEdited != null && artistEdited.name.length == 0"
+            (click)="updateArtist()"
           >
             Save
           </button>
-          <button type="button" class="btn btn-danger btn-sm" (click)="deleteSong()"
-            [disabled]="songEdited != null && songEdited.id.length == 0 || songEdited.name.length == 0 || songEdited.year.length == 0"
+          <button
+            type="button" class="btn btn-danger btn-sm"
+            [disabled]="artistEdited != null && artistEdited.name.length == 0"
+            (click)="deleteArtist()"
+          >
+            Remove
+          </button>
+        </div>
+      </div>
+    </div>
+    <div
+      *ngIf="isActiveEditSection[1]
+        && artistSelected != null
+        && albumSelected != null"
+    >
+      <div class="row">
+        <div class="col-md-1 col-md-offset-1"></div>
+        <div class="col-md-5 col-right-align">
+          <button
+            type="button" class="btn btn-success btn-sm"
+            [disabled]="albumEdited != null && albumEdited.name.length == 0"
+            (click)="updateAlbum()"
+          >
+            Save
+          </button>
+          <button
+            type="button" class="btn btn-danger btn-sm"
+            [disabled]="albumEdited != null && albumEdited.name.length == 0"
+            (click)="deleteAlbum()"
+          >
+            Remove
+          </button>
+        </div>
+      </div>
+    </div>
+    <div
+      *ngIf="isActiveEditSection[2]
+        && artistSelected != null
+        && albumSelected != null
+        && songSelected != null"
+    >
+      <div class="row">
+        <div class="col-md-1 col-md-offset-1"></div>
+        <div class="col-md-5 col-right-align">
+          <button
+            type="button" class="btn btn-success btn-sm" (click)="updateSong()"
+            [disabled]="songEdited != null
+              && songEdited.id.length == 0
+              || songEdited.name.length == 0
+              || songEdited.year.length == 0"
+          >
+            Save
+          </button>
+          <button
+            type="button" class="btn btn-danger btn-sm" (click)="deleteSong()"
+            [disabled]="songEdited != null
+              && songEdited.id.length == 0
+              || songEdited.name.length == 0
+              || songEdited.year.length == 0"
           >
             Remove
           </button>

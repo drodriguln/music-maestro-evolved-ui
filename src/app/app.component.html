@@ -2,22 +2,28 @@
   <div id="nav-bar" class="row">
     <div class="col-md-6 col-md-offset-1">
       <ul class="nav nav-pills">
-        <li data-toggle="collapse" data-target="#library"
-        (click)="setActiveTab(0)" [ngClass]="{'active' : isActiveMenuSection[0]}">
+        <li
+          data-toggle="collapse" data-target="#library"
+          (click)="setActiveTab(0)" [ngClass]="{'active' : isActiveMenuSection[0]}"
+        >
           <a href="#">
             <i class="glyphicon glyphicon-music"></i>
             Library
           </a>
         </li>
-        <li class="border" data-toggle="collapse" data-target="#edit"
-        (click)="setActiveTab(1)" [ngClass]="{'active' : isActiveMenuSection[1]}">
+        <li
+          class="border" data-toggle="collapse" data-target="#edit"
+          (click)="setActiveTab(1)" [ngClass]="{'active' : isActiveMenuSection[1]}"
+        >
           <a href="#">
             <i class="glyphicon glyphicon-pencil"></i>
             Edit
           </a>
         </li>
-        <li data-toggle="collapse" data-target="#upload"
-        (click)="setActiveTab(2)" [ngClass]="{'active' : isActiveMenuSection[2]}">
+        <li
+          data-toggle="collapse" data-target="#upload"
+          (click)="setActiveTab(2)" [ngClass]="{'active' : isActiveMenuSection[2]}"
+        >
           <a href="#">
             <i class="glyphicon glyphicon-cloud-upload"></i>
             Upload
@@ -27,8 +33,11 @@
     </div>
   </div>
   <div id="library" class="collapse" *ngIf="isActiveMenuSection[0]">
-    <app-library [selection]="selection"
-    (setPlaylist)="setPlaylist($event)" (getSelection)="getSelection($event)" (exitMenu)="exitMenu()">
+    <app-library
+      [selection]="selection"
+      (setPlaylist)="setPlaylist($event)" (getSelection)="getSelection($event)"
+      (exitMenu)="exitMenu()"
+    >
       Loading Library Component...
     </app-library>
   </div>
@@ -44,8 +53,10 @@
   </div>
 </div>
 <div *ngIf="isPlayerLoaded">
-  <app-player [playlist]="playlist" [selection]="selection"
-  (getSelection)="getSelection($event)">
+  <app-player
+    [playlist]="playlist" [selection]="selection"
+    (getSelection)="getSelection($event)"
+  >
     Loading Player Component...
   </app-player>
 </div>
